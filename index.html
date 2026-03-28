@@ -351,7 +351,7 @@ function Hero(){
             <div style={{position:'absolute',bottom:0,left:0,right:0,height:'30%',background:'linear-gradient(to top, rgba(0,0,0,0.95), transparent)',zIndex:3,pointerEvents:'none'}}></div>
             <div style={{position:'absolute',top:0,left:0,right:0,height:'10%',background:'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',zIndex:3,pointerEvents:'none'}}></div>
             
-            <iframe src="https://www.youtube.com/embed/kIBXuoGg3K8?autoplay=1&mute=1&loop=1&playlist=kIBXuoGg3K8&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowFullScreen title="Studio" style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%) scale(1.35)',width:'100%',height:'100%',border:'none',opacity:0.95}}/>
+            <iframe src="https://www.youtube.com/embed/kIBXuoGg3K8?autoplay=1&mute=1&loop=1&playlist=kIBXuoGg3K8&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowFullScreen title="Studio" style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%) scale(1.35)',width:'100%',height:'100%',border:'none',opacity:0.95,pointerEvents:'none'}}/>
             
             {/* Holographic scanning line */}
             <div style={{
@@ -362,24 +362,6 @@ function Hero(){
               pointerEvents:'none',
               zIndex:4
             }}></div>
-          </div>
-
-          {/* Floating Protection Tag over video */}
-          <div style={{
-            position:'absolute',bottom:15,left:-10,
-            background:'linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(0,0,0,0.8) 100%)',
-            border:'1px solid rgba(200,16,46,0.5)',
-            backdropFilter:'blur(5px)',
-            padding:'10px 18px',
-            borderRadius:'6px',
-            display:'flex',alignItems:'center',gap:12,
-            boxShadow:'10px 10px 30px rgba(0,0,0,0.7)',
-            zIndex:5,
-            pointerEvents:'none',
-            transform:'translateZ(30px)'
-          }}>
-             <div style={{width:8,height:8,background:'#10B981',borderRadius:'50%',boxShadow:'0 0 10px #10B981'}}></div>
-             <span style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'1.1rem',letterSpacing:'0.06em',color:'#fff',lineHeight:1}}>PPF SHIELD ACTIVE</span>
           </div>
         </div>
       </div>
