@@ -54,7 +54,7 @@
 
     /* ── Navbar ── */
     .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(5,5,5,0.98) 0%,rgba(2,2,2,0.97) 100%);backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,16,46,0.4);box-shadow:0 2px 50px rgba(0,0,0,0.9),0 0 1px rgba(200,16,46,0.15);transition:padding 0.3s;}
-    .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:#fff;}
+    .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.12em;color:#fff;}
     .nav-link{font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey);transition:color 0.25s;cursor:none;position:relative;text-decoration:none;white-space:nowrap;}
     .nav-link:hover{color:#fff;}
     .nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:#C8102E;transition:width 0.3s;}
@@ -216,10 +216,10 @@ function Navbar(){
     <nav className="navbar" style={{padding:scrolled?'9px 0':'13px 0'}}>
       <div style={{maxWidth:1400,margin:'0 auto',padding:'0 32px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
         <a href="#home" style={{display:'flex',alignItems:'center',gap:12,textDecoration:'none'}}>
-          <img src={logo} alt="Detailing Bros" style={{height:42,width:42,objectFit:'contain',borderRadius:'50%',border:'1px solid rgba(200,16,46,0.4)'}}/>
+          <img src={logo} alt="Detailing Bros" style={{height:62,width:62,objectFit:'contain',borderRadius:'50%',border:'2px solid rgba(200,16,46,0.5)',boxShadow:'0 0 12px rgba(200,16,46,0.2)'}}/>
           <div>
             <div className="nav-logo-text">DETAILING BROS</div>
-            <div style={{fontSize:'0.48rem',letterSpacing:'0.22em',color:'#C8102E',textTransform:'uppercase',marginTop:1}}>Paint Protection Specialists</div>
+            <div style={{fontSize:'0.55rem',letterSpacing:'0.22em',color:'#C8102E',textTransform:'uppercase',marginTop:2}}>Paint Protection Specialists</div>
           </div>
         </a>
         <div id="desknav" style={{display:'flex',alignItems:'center',gap:20}}>
@@ -244,8 +244,8 @@ function Navbar(){
     </nav>
     <div className={`mobile-menu ${open?'open':''}`}>
       <button onClick={()=>setOpen(false)} style={{position:'absolute',top:24,right:32,background:'none',border:'none',color:'#C8102E',fontSize:'1.4rem',cursor:'pointer'}}>✕</button>
-      <img src={logo} alt="" style={{height:50,width:50,borderRadius:'50%',marginBottom:6,border:'1px solid rgba(200,16,46,0.4)'}}/>
-      <div style={{fontFamily:'Bebas Neue,sans-serif',color:'#fff',fontSize:'1.2rem',letterSpacing:'0.12em',marginBottom:20}}>DETAILING BROS</div>
+      <img src={logo} alt="" style={{height:72,width:72,borderRadius:'50%',marginBottom:8,border:'2px solid rgba(200,16,46,0.5)',boxShadow:'0 0 16px rgba(200,16,46,0.25)'}}/>
+      <div style={{fontFamily:'Bebas Neue,sans-serif',color:'#fff',fontSize:'1.5rem',letterSpacing:'0.12em',marginBottom:20}}>DETAILING BROS</div>
       {links.map(l=><a key={l.label} href={l.href} className="mobile-nav-link" onClick={()=>setOpen(false)}>{l.label}</a>)}
       <a href="#contact" onClick={()=>setOpen(false)} className="btn-red" style={{marginTop:8}}>Book Consultation</a>
     </div>
@@ -620,10 +620,10 @@ function Footer(){
         <div id="footergrid" style={{display:'grid',gridTemplateColumns:'2fr 1fr 1fr 1fr',gap:'clamp(24px,4vw,56px)',paddingBottom:48}}>
           <div>
             <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:18}}>
-              <img src={logo} alt="" style={{height:48,width:48,objectFit:'contain',borderRadius:'50%',border:'1px solid rgba(200,16,46,0.35)'}}/>
+              <img src={logo} alt="" style={{height:62,width:62,objectFit:'contain',borderRadius:'50%',border:'2px solid rgba(200,16,46,0.5)',boxShadow:'0 0 12px rgba(200,16,46,0.2)'}}/>
               <div>
-                <div style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'1.1rem',letterSpacing:'0.12em',color:'#fff'}}>DETAILING BROS</div>
-                <div style={{fontSize:'0.48rem',letterSpacing:'0.2em',color:'#C8102E',textTransform:'uppercase'}}>Paint Protection Specialists</div>
+                <div style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'1.4rem',letterSpacing:'0.12em',color:'#fff'}}>DETAILING BROS</div>
+                <div style={{fontSize:'0.52rem',letterSpacing:'0.2em',color:'#C8102E',textTransform:'uppercase'}}>Paint Protection Specialists</div>
               </div>
             </div>
             <p style={{fontFamily:'Cormorant Garamond,serif',fontStyle:'italic',color:'var(--grey)',fontSize:'0.92rem',lineHeight:1.75,marginBottom:20,borderLeft:'2px solid #C8102E',paddingLeft:14}}>"Elevate Your Drive with Pristine Car Detailing"</p>
