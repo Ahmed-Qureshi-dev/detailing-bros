@@ -258,8 +258,7 @@ function Hero(){
     <section id="home" style={{
       minHeight:'100dvh',height:'100dvh',
       position:'relative',overflow:'hidden',
-      display:'flex',alignItems:'center',
-      background:'linear-gradient(135deg,rgba(3,3,3,0.8) 0%,rgba(10,10,10,0.4) 45%,rgba(5,5,5,0.8) 100%), url("./carbon-bg.jpeg") center/cover no-repeat'
+      display:'flex',alignItems:'center'
     }}>
       {/* Brushed steel lines */}
       <div style={{position:'absolute',inset:0,backgroundImage:"repeating-linear-gradient(91deg,transparent,transparent 2px,rgba(255,255,255,0.014) 2px,rgba(255,255,255,0.014) 3px)",pointerEvents:'none',zIndex:1}}></div>
@@ -747,10 +746,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
       50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 70px 40px #FF1A36, 0 0 110px 80px #050505; }
       100% { opacity: 0.85; transform: scale(1); box-shadow: 0 0 60px 30px #FF1A36, 0 0 95px 65px #050505; }
     }
+    
+    #home { background: linear-gradient(135deg,rgba(3,3,3,0.8) 0%,rgba(10,10,10,0.4) 45%,rgba(5,5,5,0.8) 100%), url("./carbon-bg.jpeg") center/cover no-repeat; }
 
   @media(max-width:900px){#desknav{display:none!important;}#hamburger{display:flex!important;}}
   @media(max-width:768px){
-    section#home { height: auto !important; min-height: 100dvh !important; }
+    section#home { 
+      height: auto !important; 
+      min-height: 100dvh !important; 
+      background: linear-gradient(135deg,rgba(3,3,3,0.85) 0%,rgba(10,10,10,0.5) 45%,rgba(5,5,5,0.95) 100%), url("./carbon-mbl.jpeg") center/cover no-repeat !important; 
+    }
     #hero-main-layout { flex-direction: column !important; justify-content: center !important; padding-top: 110px !important; padding-bottom: 60px !important; height: auto !important; gap: 40px !important; }
     #hero-text-content { flex: unset !important; max-width: 100% !important; width: 100% !important; padding-bottom: 0px !important; }
     #hero-image-grid { position: relative !important; width: 100% !important; height: 380px !important; flex: unset !important; }
