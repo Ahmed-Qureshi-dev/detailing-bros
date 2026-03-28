@@ -10,17 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root{
-      --black:#0d0e10;
-      --steel:#15181f;
-      --steel-mid:#1c2028;
-      --steel-light:#252930;
+      --black:#050505;
+      --steel:#0C0C0C;
+      --steel-mid:#141414;
+      --steel-light:#1C1C1C;
       --red:#C8102E;
-      --red-bright:#E8112F;
-      --red-dim:rgba(200,16,46,0.15);
-      --white:#E8ECF0;
-      --grey:#7A8494;
-      --border:rgba(200,16,46,0.22);
-      --border-steel:rgba(255,255,255,0.07);
+      --red-bright:#FF1A36;
+      --red-dim:rgba(200,16,46,0.12);
+      --white:#FFFFFF;
+      --grey:#9CA3AF;
+      --border:rgba(200,16,46,0.28);
+      --border-steel:rgba(255,255,255,0.05);
     }
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
@@ -34,37 +34,37 @@
         repeating-linear-gradient(
           92deg,
           transparent,
-          transparent 2px,
-          rgba(255,255,255,0.012) 2px,
-          rgba(255,255,255,0.012) 4px
+          transparent 3px,
+          rgba(255,255,255,0.008) 3px,
+          rgba(255,255,255,0.008) 4px
         ),
         repeating-linear-gradient(
           180deg,
           transparent,
-          transparent 40px,
-          rgba(255,255,255,0.006) 40px,
-          rgba(255,255,255,0.006) 41px
+          transparent 48px,
+          rgba(255,255,255,0.004) 48px,
+          rgba(255,255,255,0.004) 49px
         );
     }
     @media(max-width:768px){body{cursor:auto;}a,button{cursor:pointer!important;}.cursor,.cursor-ring{display:none!important;}}
 
     /* ── Cursor ── */
-    .cursor{position:fixed;width:9px;height:9px;background:#C8102E;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 10px #C8102E,0 0 22px rgba(200,16,46,0.6);}
+    .cursor{position:fixed;width:9px;height:9px;background:linear-gradient(135deg,#FF1A36,#C8102E,#8B0000);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 12px #C8102E,0 0 28px rgba(200,16,46,0.7),0 0 48px rgba(200,16,46,0.3);}
     .cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(200,16,46,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.14s ease;}
 
     /* ── Navbar ── */
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(12,13,16,0.98) 0%,rgba(10,11,14,0.97) 100%);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,16,46,0.35);box-shadow:0 2px 40px rgba(0,0,0,0.8);transition:padding 0.3s;}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(5,5,5,0.98) 0%,rgba(2,2,2,0.97) 100%);backdrop-filter:blur(28px);border-bottom:1px solid rgba(200,16,46,0.4);box-shadow:0 2px 50px rgba(0,0,0,0.9),0 0 1px rgba(200,16,46,0.15);transition:padding 0.3s;}
     .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.12em;color:#fff;}
     .nav-link{font-family:'DM Sans',sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--grey);transition:color 0.25s;cursor:none;position:relative;text-decoration:none;white-space:nowrap;}
     .nav-link:hover{color:#fff;}
     .nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:#C8102E;transition:width 0.3s;}
     .nav-link:hover::after{width:100%;}
     .dropdown-parent{position:relative;}
-    .dropdown-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:rgba(10,10,12,0.99);backdrop-filter:blur(20px);border:1px solid rgba(200,16,46,0.25);border-top:2px solid #C8102E;min-width:264px;padding:10px 0;opacity:0;visibility:hidden;transition:all 0.22s ease;box-shadow:0 20px 50px rgba(0,0,0,0.95);z-index:100;}
+    .dropdown-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:rgba(5,5,5,0.99);backdrop-filter:blur(24px);border:1px solid rgba(200,16,46,0.25);border-top:2px solid #C8102E;min-width:264px;padding:10px 0;opacity:0;visibility:hidden;transition:all 0.22s ease;box-shadow:0 20px 60px rgba(0,0,0,0.97);z-index:100;}
     .dropdown-parent:hover .dropdown-menu{opacity:1;visibility:visible;top:calc(100% + 6px);}
     .dropdown-item{display:block;padding:9px 22px;font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);transition:all 0.2s;text-decoration:none;white-space:nowrap;border-left:2px solid transparent;}
     .dropdown-item:hover{color:#fff;padding-left:30px;background:linear-gradient(to right,rgba(200,16,46,0.1),transparent);border-left-color:#C8102E;}
-    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,5,7,0.99);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:0 32px;}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(2,2,2,0.99);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:0 32px;}
     .mobile-menu.open{display:flex;}
     .mobile-nav-link{font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--grey);text-decoration:none;padding:4px 0;transition:color 0.2s;}
     .mobile-nav-link:hover{color:#fff;}
@@ -76,10 +76,10 @@
     .red-tag{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.58rem;letter-spacing:0.32em;text-transform:uppercase;color:#C8102E;border:1px solid rgba(200,16,46,0.4);padding:5px 16px;background:rgba(200,16,46,0.06);}
 
     /* ── Buttons ── */
-    .btn-red{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;padding:13px 32px;border:none;color:#fff;background:#C8102E;transition:all 0.3s;position:relative;overflow:hidden;text-decoration:none;white-space:nowrap;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
-    .btn-red:hover{background:#E8112F;box-shadow:0 0 30px rgba(200,16,46,0.5);}
-    .btn-outline{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;padding:13px 32px;border:1px solid rgba(255,255,255,0.2);color:var(--grey);background:transparent;transition:all 0.3s;text-decoration:none;white-space:nowrap;}
-    .btn-outline:hover{border-color:#C8102E;color:#fff;box-shadow:0 0 20px rgba(200,16,46,0.2);}
+    .btn-red{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;padding:13px 32px;border:none;color:#fff;background:linear-gradient(135deg,#8B0000 0%,#C8102E 25%,#FF2D2D 50%,#C8102E 75%,#8B0000 100%);background-size:200% 100%;transition:all 0.4s ease;position:relative;overflow:hidden;text-decoration:none;white-space:nowrap;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+    .btn-red:hover{background-position:100% 0;box-shadow:0 0 36px rgba(200,16,46,0.6),0 0 8px rgba(255,45,45,0.3);}
+    .btn-outline{display:inline-block;font-family:'DM Sans',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;padding:13px 32px;border:1px solid rgba(255,255,255,0.25);color:var(--grey);background:transparent;transition:all 0.35s;text-decoration:none;white-space:nowrap;}
+    .btn-outline:hover{border-color:#C8102E;color:#FFFFFF;box-shadow:0 0 24px rgba(200,16,46,0.3),0 0 6px rgba(255,45,45,0.15);}
 
     /* ── Hero image slider ── */
     .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s ease;background-size:cover;background-position:center;}
@@ -104,9 +104,9 @@
     .why-item:hover .why-num{color:#C8102E;text-shadow:0 0 20px rgba(200,16,46,0.5);}
 
     /* ── Service cards ── */
-    .service-card{background:linear-gradient(160deg,#1c2028,#141720);border:1px solid rgba(255,255,255,0.06);border-top:2px solid transparent;padding:30px 22px;transition:all 0.35s;position:relative;overflow:hidden;text-decoration:none;display:block;}
-    .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#C8102E;transform:scaleX(0);transition:transform 0.35s;transform-origin:left;}
-    .service-card:hover{background:linear-gradient(160deg,#222830,#1a1e26);border-color:rgba(200,16,46,0.35);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.7),0 0 0 1px rgba(200,16,46,0.1);}
+    .service-card{background:linear-gradient(160deg,#141414,#0C0C0C);border:1px solid rgba(255,255,255,0.05);border-top:2px solid transparent;padding:30px 22px;transition:all 0.35s;position:relative;overflow:hidden;text-decoration:none;display:block;}
+    .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8B0000,#C8102E,#FF2D2D,#C8102E,#8B0000);transform:scaleX(0);transition:transform 0.35s;transform-origin:left;}
+    .service-card:hover{background:linear-gradient(160deg,#1C1C1C,#111111);border-color:rgba(200,16,46,0.4);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.8),0 0 0 1px rgba(200,16,46,0.15);}
     .service-card:hover::before{transform:scaleX(1);}
     .service-icon{width:44px;height:44px;border:1px solid rgba(200,16,46,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:all 0.3s;background:rgba(200,16,46,0.05);}
     .service-card:hover .service-icon{border-color:#C8102E;background:rgba(200,16,46,0.12);box-shadow:0 0 16px rgba(200,16,46,0.2);}
@@ -119,7 +119,7 @@
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
 
     /* ── Footer ── */
-    footer{background:#060608;border-top:1px solid rgba(200,16,46,0.2);}
+    footer{background:#030303;border-top:1px solid rgba(200,16,46,0.25);}
     .footer-link{color:var(--grey);font-size:0.7rem;letter-spacing:0.05em;text-decoration:none;transition:color 0.25s;display:block;margin-bottom:10px;}
     .footer-link:hover{color:#fff;}
     .stat-div{width:1px;height:32px;background:rgba(200,16,46,0.35);}
@@ -269,12 +269,12 @@ function Hero(){
       minHeight:'100dvh',height:'100dvh',
       position:'relative',overflow:'hidden',
       display:'flex',alignItems:'center',
-      background:'linear-gradient(135deg,#08090b 0%,#0f1218 45%,#0b0d11 100%)'
+      background:'linear-gradient(135deg,#030303 0%,#0A0A0A 45%,#050505 100%)'
     }}>
       {/* Brushed steel lines */}
-      <div style={{position:'absolute',inset:0,backgroundImage:"repeating-linear-gradient(91deg,transparent,transparent 2px,rgba(255,255,255,0.018) 2px,rgba(255,255,255,0.018) 3px)",pointerEvents:'none',zIndex:1}}></div>
+      <div style={{position:'absolute',inset:0,backgroundImage:"repeating-linear-gradient(91deg,transparent,transparent 2px,rgba(255,255,255,0.014) 2px,rgba(255,255,255,0.014) 3px)",pointerEvents:'none',zIndex:1}}></div>
       {/* Metallic sheen */}
-      <div style={{position:'absolute',inset:0,background:'linear-gradient(110deg,transparent 20%,rgba(255,255,255,0.05) 45%,rgba(255,255,255,0.03) 55%,transparent 75%)',pointerEvents:'none',zIndex:1}}></div>
+      <div style={{position:'absolute',inset:0,background:'linear-gradient(110deg,transparent 20%,rgba(255,255,255,0.04) 45%,rgba(255,255,255,0.02) 55%,transparent 75%)',pointerEvents:'none',zIndex:1}}></div>
       {/* Red left bar */}
       <div style={{position:'absolute',left:0,top:'15%',bottom:'15%',width:3,background:'linear-gradient(to bottom,transparent,#C8102E,transparent)',zIndex:3}}></div>
 
@@ -326,7 +326,7 @@ function Hero(){
           </div>
 
           {/* Body text */}
-          <p className="fade-up fd4" id="herobody" style={{color:'#7A8494',fontSize:'clamp(0.76rem,0.9vw,0.86rem)',lineHeight:1.8,maxWidth:380,marginBottom:20,fontWeight:300}}>
+          <p className="fade-up fd4" id="herobody" style={{color:'#9CA3AF',fontSize:'clamp(0.76rem,0.9vw,0.86rem)',lineHeight:1.8,maxWidth:380,marginBottom:20,fontWeight:300}}>
             Where precision meets artistry. Every surface treated with the care your vehicle deserves — flawless, lasting, extraordinary.
           </p>
 
@@ -350,7 +350,7 @@ function Hero(){
                 {i>0&&<div className="stat-div"></div>}
                 <div>
                   <div style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(1.3rem,2vw,1.8rem)',color:'#C8102E',lineHeight:1,letterSpacing:'0.04em'}}>{s[0]}</div>
-                  <div style={{fontSize:'0.5rem',letterSpacing:'0.16em',textTransform:'uppercase',color:'#5A6070',marginTop:2}}>{s[1]}</div>
+                  <div style={{fontSize:'0.5rem',letterSpacing:'0.16em',textTransform:'uppercase',color:'#6B7280',marginTop:2}}>{s[1]}</div>
                 </div>
               </React.Fragment>
             ))}
@@ -364,8 +364,8 @@ function Hero(){
               {bold:'INVISIBLE FILM',sub:'Seamless Coverage'},
             ].map((f,i)=>(
               <div key={i} style={{flex:1,paddingLeft:i>0?12:0,borderLeft:i>0?'1px solid rgba(200,16,46,0.25)':'none'}}>
-                <div style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.58rem',letterSpacing:'0.06em',textTransform:'uppercase',color:'#D0D4DC',fontWeight:600,marginBottom:2}}>{f.bold}</div>
-                <div style={{fontSize:'0.54rem',color:'#5A6070',lineHeight:1.3}}>{f.sub}</div>
+                <div style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.58rem',letterSpacing:'0.06em',textTransform:'uppercase',color:'#E5E7EB',fontWeight:600,marginBottom:2}}>{f.bold}</div>
+                <div style={{fontSize:'0.54rem',color:'#6B7280',lineHeight:1.3}}>{f.sub}</div>
               </div>
             ))}
           </div>
@@ -445,7 +445,7 @@ function Hero(){
             <div style={{
               position:'absolute',
               inset:-30,
-              background:'radial-gradient(ellipse at center,transparent 55%,rgba(8,9,11,0.95) 85%,#08090b 100%)',
+              background:'radial-gradient(ellipse at center,transparent 55%,rgba(3,3,3,0.95) 85%,#030303 100%)',
               pointerEvents:'none',
               zIndex:10,
               borderRadius:40,
@@ -478,7 +478,7 @@ function Hero(){
 /* ═══════════════════════════ ABOUT ═══════════════════════════ */
 function About(){
   return(
-    <section id="about" style={{padding:'100px 0',background:'linear-gradient(180deg,#0d0e10 0%,#14171e 40%,#11141a 60%,#0d0e10 100%)'}}>
+    <section id="about" style={{padding:'100px 0',background:'linear-gradient(180deg,#050505 0%,#0F0F0F 40%,#0A0A0A 60%,#050505 100%)'}}>
       <div id="aboutinner" style={{maxWidth:1400,margin:'0 auto',padding:'0 clamp(20px,4vw,48px)'}}>
         <div className="fade-up" style={{marginBottom:52,display:'flex',alignItems:'center',gap:16}}>
           <div style={{width:32,height:2,background:'#C8102E'}}></div>
@@ -506,13 +506,13 @@ function About(){
           <div>
             <h2 className="fade-up" style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(2rem,4vw,3.5rem)',marginBottom:4,letterSpacing:'0.04em',lineHeight:1}}>UNMATCHED</h2>
             <h2 className="fade-up fd1" style={{fontFamily:'Cormorant Garamond,serif',fontSize:'clamp(1.5rem,2.5vw,2.2rem)',color:'#C8102E',fontStyle:'italic',marginBottom:22,lineHeight:1.2}}>Expertise in Car Detailing</h2>
-            <p className="fade-up fd2" style={{color:'#a0a6b4',fontSize:'0.87rem',lineHeight:1.9,marginBottom:16,fontWeight:300}}>At Detailing Bros, your vehicle receives more than a service — it receives a transformation. As Karachi's premier car detailing studio, we specialize in premium Paint Protection Film, ceramic coatings, and precision car wraps.</p>
+            <p className="fade-up fd2" style={{color:'#B0B4BC',fontSize:'0.87rem',lineHeight:1.9,marginBottom:16,fontWeight:300}}>At Detailing Bros, your vehicle receives more than a service — it receives a transformation. As Karachi's premier car detailing studio, we specialize in premium Paint Protection Film, ceramic coatings, and precision car wraps.</p>
             <p className="fade-up fd3" style={{color:'var(--grey)',fontSize:'0.85rem',lineHeight:1.9,marginBottom:28,fontWeight:300}}>From the first consultation to the final polish, every detail is crafted with surgical precision — because your vehicle deserves nothing less than perfection.</p>
             <div className="fade-up fd4" style={{display:'flex',flexDirection:'column',gap:13}}>
               {['Industry-leading PPF brands & technology','State-of-the-art hexagonal detailing bay','Certified & trained specialist technicians'].map((f,i)=>(
                 <div key={i} style={{display:'flex',alignItems:'center',gap:12}}>
                   <div style={{width:6,height:6,background:'#C8102E',flexShrink:0,transform:'rotate(45deg)',boxShadow:'0 0 8px rgba(200,16,46,0.6)'}}></div>
-                  <span style={{fontSize:'0.82rem',color:'#a0a6b4'}}>{f}</span>
+                  <span style={{fontSize:'0.82rem',color:'#B0B4BC'}}>{f}</span>
                 </div>
               ))}
             </div>
@@ -604,7 +604,7 @@ function Gallery(){
     return()=>cancelAnimationFrame(raf.current);
   },[]);
   return(
-    <section style={{padding:'84px 0 104px',overflow:'hidden',background:'linear-gradient(180deg,#0d0e10,#13161c 30%,#111419 70%,#0d0e10)',position:'relative'}}>
+    <section style={{padding:'84px 0 104px',overflow:'hidden',background:'linear-gradient(180deg,#050505,#0F0F0F 30%,#0A0A0A 70%,#050505)',position:'relative'}}>
       <div style={{position:'absolute',top:0,left:0,right:0,height:1,background:'linear-gradient(to right,transparent,#C8102E,transparent)',opacity:0.4}}></div>
       <div id="galleryhead" style={{maxWidth:1400,margin:'0 auto',padding:'0 clamp(20px,4vw,48px)',marginBottom:40,display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:10}}>
         <div style={{display:'flex',alignItems:'center',gap:16}}>
