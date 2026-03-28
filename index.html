@@ -270,116 +270,100 @@ function Hero(){
       {/* ══ MAIN LAYOUT ══ */}
       <div id="hero-main-layout" style={{
         maxWidth:1400,margin:'0 auto',width:'100%',
-        padding:'0 clamp(28px,4vw,64px)',
-        paddingTop:74,
-        display:'flex',alignItems:'center',
-        gap:'clamp(32px,5vw,72px)',
+        padding:'0 clamp(20px,4vw,40px)',
+        paddingTop:110,
+        display:'flex',flexDirection:'column',alignItems:'center',
         position:'relative',zIndex:4,
-        height:'100%'
+        minHeight:'100dvh'
       }}>
 
-        {/* ── LEFT TEXT ── */}
-        <div id="hero-text-content" style={{flex:'0 0 50%',maxWidth:'50%',display:'flex',flexDirection:'column',justifyContent:'center',position:'relative'}}>
+        {/* ── CENTER TEXT ── */}
+        <div id="hero-text-content" style={{display:'flex',flexDirection:'column',alignItems:'center',textAlign:'center',maxWidth:900,position:'relative'}}>
           
-          {/* High-tech badge */}
-          <div className="fade-up" style={{display:'inline-flex',alignItems:'center',gap:10,padding:'6px 14px',background:'rgba(200, 16, 46, 0.1)',border:'1px solid rgba(200, 16, 46, 0.3)',backdropFilter:'blur(10px)',marginBottom:20,width:'max-content'}}>
-            <div style={{width:8,height:8,background:'#C8102E',boxShadow:'0 0 10px #C8102E',animation:'pulse 1.5s infinite'}}></div>
-            <span style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.65rem',letterSpacing:'0.25em',textTransform:'uppercase',color:'#C8102E',fontWeight:700}}>CERTIFIED PPF INSTALLERS</span>
+          <div className="fade-up" style={{display:'inline-flex',alignItems:'center',gap:10,padding:'6px 16px',background:'rgba(200, 16, 46, 0.1)',border:'1px solid rgba(200, 16, 46, 0.3)',backdropFilter:'blur(10px)',marginBottom:24,borderRadius:30}}>
+            <div style={{width:8,height:8,background:'#C8102E',boxShadow:'0 0 10px #C8102E',animation:'pulse 1.5s infinite',borderRadius:'50%'}}></div>
+            <span style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.65rem',letterSpacing:'0.25em',textTransform:'uppercase',color:'#C8102E',fontWeight:700}}>NEXT-GEN PAINT PROTECTION</span>
           </div>
 
-          {/* Huge heading */}
-          <div className="fade-up fd1" style={{lineHeight:0.92,marginBottom:2}}>
-            <h1 style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(3.5rem,6vw,6.8rem)',letterSpacing:'0.03em',color:'#fff',textShadow:'0 4px 24px rgba(0,0,0,0.8)'}}>
-              INVISIBLE
-            </h1>
-          </div>
-          <div className="fade-up fd2" style={{lineHeight:0.92,marginBottom:18}}>
-            <h1 style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(3.5rem,6vw,6.8rem)',letterSpacing:'0.03em',WebkitTextStroke:'2px #C8102E',color:'transparent',textShadow:'0 0 40px rgba(200,16,46,0.3)'}}>
-              ARMOR.
-            </h1>
+          <div className="fade-up fd1" style={{lineHeight:0.92,marginBottom:8}}>
+             <h1 style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(4rem,8vw,8.5rem)',letterSpacing:'0.04em',color:'#fff',textShadow:'0 10px 40px rgba(0,0,0,0.9)'}}>
+              ULTIMATE <span style={{WebkitTextStroke:'2px #C8102E',color:'transparent',textShadow:'0 0 40px rgba(200,16,46,0.4)'}}>SHIELD.</span>
+             </h1>
           </div>
 
-          {/* Glowing sub text line */}
-          <div className="fade-up fd3" style={{display:'flex',alignItems:'center',gap:12,marginBottom:18}}>
-             <div style={{height:1,width:40,background:'linear-gradient(90deg, #C8102E, transparent)'}}></div>
-             <span style={{color:'#E5E7EB',fontFamily:'DM Sans,sans-serif',fontSize:'0.75rem',letterSpacing:'0.3em',textTransform:'uppercase',fontWeight:600}}>Self-Healing Paint Protection</span>
-          </div>
-
-          <p className="fade-up fd4" id="herobody" style={{color:'#D1D5DB',fontSize:'clamp(0.85rem,1vw,0.95rem)',lineHeight:1.7,maxWidth:460,marginBottom:32,fontWeight:300,textShadow:'0 2px 4px rgba(0,0,0,0.8)'}}>
-            Shield your investment with aerospace-grade Paint Protection Film. Engineered to defend against rock chips, scratches, and harsh elements while delivering a flawless, glass-like finish that heals itself instantly.
+          <p className="fade-up fd3" id="herobody" style={{color:'#D1D5DB',fontSize:'clamp(0.9rem,1.2vw,1.1rem)',lineHeight:1.8,maxWidth:700,marginBottom:36,fontWeight:300,textShadow:'0 2px 4px rgba(0,0,0,0.8)'}}>
+            Aerospace-grade Paint Protection Film engineered to defend against rock chips, scratches, and harsh elements while delivering a flawless, self-healing glass-like finish.
           </p>
 
-          <div className="fade-up fd5" id="herobtns" style={{display:'flex',gap:16,flexWrap:'wrap',marginBottom:36}}>
-            <a href="#contact" className="btn-red" style={{fontSize:'0.85rem',padding:'14px 32px',boxShadow:'0 10px 30px -10px rgba(200,16,46,0.8)',textTransform:'uppercase',letterSpacing:'0.1em'}}>Protect Your Vehicle</a>
-            <a href="#services" className="btn-outline" style={{fontSize:'0.85rem',padding:'14px 32px',borderColor:'rgba(255,255,255,0.3)',color:'#fff',textTransform:'uppercase',letterSpacing:'0.1em'}}>See The Tech →</a>
-          </div>
-
-          {/* High-end Specs */}
-          <div className="fade-up fd6" style={{display:'flex',alignItems:'center',gap:'clamp(20px,3vw,40px)',borderTop:'1px solid rgba(255,255,255,0.1)',paddingTop:20}}>
-            {[
-              {v:'10 YR',l:'Warranty'},
-              {v:'MAX',l:'Scratch Guard'},
-              {v:'100%',l:'Self-Healing'}
-            ].map((s,i)=>(
-              <div key={i} style={{display:'flex',flexDirection:'column'}}>
-                <span style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(1.5rem,2vw,2rem)',color:'#C8102E',lineHeight:1,letterSpacing:'0.05em'}}>{s.v}</span>
-                <span style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.55rem',letterSpacing:'0.15em',color:'#9CA3AF',textTransform:'uppercase',marginTop:4}}>{s.l}</span>
-              </div>
-            ))}
+          <div className="fade-up fd4" id="herobtns" style={{display:'flex',gap:16,flexWrap:'wrap',justifyContent:'center',marginBottom:48}}>
+            <a href="#contact" className="btn-red" style={{fontSize:'0.9rem',padding:'16px 36px',boxShadow:'0 10px 30px -10px rgba(200,16,46,0.9)',textTransform:'uppercase',letterSpacing:'0.1em'}}>Protect Your Vehicle</a>
+            <a href="#services" className="btn-outline" style={{fontSize:'0.9rem',padding:'16px 36px',borderColor:'rgba(255,255,255,0.3)',color:'#fff',textTransform:'uppercase',letterSpacing:'0.1em'}}>Explore Technology</a>
           </div>
         </div>
 
-        {/* ── RIGHT VIDEO SHIELD ── */}
-        <div id="hero-image-grid" style={{flex:1,display:'flex',alignItems:'center',justifyContent:'center',position:'relative'}}>
-          
-          {/* Intense Glow */}
-          <div style={{position:'absolute',right:'5%',top:'50%',transform:'translateY(-50%)',width:'90%',height:'90%',background:'radial-gradient(circle, rgba(200,16,46,0.15) 0%, transparent 60%)',filter:'blur(50px)',zIndex:0,pointerEvents:'none'}}></div>
+        {/* ── MASSIVE 3D VIDEO PRESENTATION ── */}
+        <div id="hero-image-grid" className="fade-up fd5" style={{
+          width:'100%',
+          maxWidth:1000,
+          perspective:'1200px',
+          position:'relative',
+          marginTop:10,
+          marginBottom:40
+        }}>
+          {/* Intense Floor Glow */}
+          <div style={{position:'absolute',bottom:'-5%',left:'10%',right:'10%',height:'30%',background:'rgba(200,16,46,0.4)',filter:'blur(40px)',zIndex:0,borderRadius:'50%'}}></div>
 
-          {/* Video Container (Tech Shield) */}
-          <div className="fade-up fd4" style={{
+          {/* 3D Tilted Video Container */}
+          <div style={{
             position:'relative',
             width:'100%',
-            maxWidth:650,
-            aspectRatio:'16/9',
-            borderRadius:6,
-            overflow:'visible',
+            aspectRatio:'21/9', /* Ultra-wide cinematic */
+            transform:'rotateX(12deg) translateY(-20px) scale(0.95)',
+            transformOrigin:'bottom center',
+            transition:'transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.7s ease',
+            borderRadius:12,
+            overflow:'hidden',
+            border:'1px solid rgba(200,16,46,0.5)',
+            boxShadow:'0 40px 80px rgba(0,0,0,0.9), 0 -10px 40px rgba(200,16,46,0.2), inset 0 0 20px rgba(200,16,46,0.5)',
             zIndex:2,
-          }}>
-            {/* Outline Box */}
-            <div style={{position:'absolute',inset:0,border:'1px solid rgba(200,16,46,0.5)',boxShadow:'0 30px 60px rgba(0,0,0,0.9), 0 0 50px rgba(200,16,46,0.15)',borderRadius:6,overflow:'hidden',background:'#000'}}>
-              <iframe src="https://www.youtube.com/embed/kIBXuoGg3K8?autoplay=1&mute=1&loop=1&playlist=kIBXuoGg3K8&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowFullScreen title="Studio" style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%) scale(1.2)',width:'100%',height:'100%',border:'none',opacity:0.95}}/>
-              
-              {/* Holographic / Tech Overlays */}
-              <div style={{position:'absolute',inset:0,border:'1px solid rgba(255,255,255,0.06)',pointerEvents:'none'}}></div>
-              
-              {/* Animated Scanning Line */}
-              <div style={{
-                position:'absolute',top:0,left:0,right:0,height:2,
-                background:'linear-gradient(90deg, transparent, rgba(200,16,46,0.8), transparent)',
-                boxShadow:'0 0 15px rgba(200,16,46,1)',
-                animation:'scanLine 4s ease-in-out infinite',
-                pointerEvents:'none'
-              }}></div>
-            </div>
-
-            {/* Corner Tech Accents */}
-            <svg style={{position:'absolute',top:-10,left:-10,pointerEvents:'none',zIndex:3}} width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M0 25V0H25" stroke="#C8102E" strokeWidth="3"/></svg>
-            <svg style={{position:'absolute',bottom:-10,right:-10,pointerEvents:'none',zIndex:3}} width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M25 0V25H0" stroke="#C8102E" strokeWidth="3"/></svg>
+            background:'#000',
+            cursor:'pointer'
+          }}
+          onMouseEnter={(e)=>{e.currentTarget.style.transform='rotateX(0deg) translateY(0) scale(1)'; e.currentTarget.style.boxShadow='0 20px 50px rgba(0,0,0,0.9), 0 0 50px rgba(200,16,46,0.4), inset 0 0 10px rgba(200,16,46,0.2)';}}
+          onMouseLeave={(e)=>{e.currentTarget.style.transform='rotateX(12deg) translateY(-20px) scale(0.95)'; e.currentTarget.style.boxShadow='0 40px 80px rgba(0,0,0,0.9), 0 -10px 40px rgba(200,16,46,0.2), inset 0 0 20px rgba(200,16,46,0.5)';}}
+          >
+            {/* Dark gradient fade on the bottom of the video for depth */}
+            <div style={{position:'absolute',bottom:0,left:0,right:0,height:'30%',background:'linear-gradient(to top, rgba(0,0,0,0.95), transparent)',zIndex:3,pointerEvents:'none'}}></div>
+            <div style={{position:'absolute',top:0,left:0,right:0,height:'10%',background:'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',zIndex:3,pointerEvents:'none'}}></div>
             
-            {/* Floating Protection Tag over video */}
+            <iframe src="https://www.youtube.com/embed/kIBXuoGg3K8?autoplay=1&mute=1&loop=1&playlist=kIBXuoGg3K8&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowFullScreen title="Studio" style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%) scale(1.35)',width:'100%',height:'100%',border:'none',opacity:0.95}}/>
+            
+            {/* Holographic scanning line */}
             <div style={{
-              position:'absolute',bottom:-15,left:-15,
-              background:'linear-gradient(135deg, #111 0%, #000 100%)',
-              border:'1px solid rgba(200,16,46,0.5)',
-              padding:'12px 20px',
-              borderRadius:'4px',
-              display:'flex',alignItems:'center',gap:12,
-              boxShadow:'10px 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(200,16,46,0.2)',
-              zIndex:5
-            }}>
-               <div style={{width:8,height:8,background:'#10B981',borderRadius:'50%',boxShadow:'0 0 10px #10B981'}}></div>
-               <span style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'1.1rem',letterSpacing:'0.06em',color:'#fff',lineHeight:1}}>PPF SHIELD ACTIVE</span>
-            </div>
+              position:'absolute',top:0,left:0,right:0,height:2,
+              background:'linear-gradient(90deg, transparent, rgba(200,16,46,0.9), transparent)',
+              boxShadow:'0 0 15px rgba(200,16,46,1)',
+              animation:'scanLine 4s ease-in-out infinite',
+              pointerEvents:'none',
+              zIndex:4
+            }}></div>
+          </div>
+
+          {/* Floating Protection Tag over video */}
+          <div style={{
+            position:'absolute',bottom:15,left:25,
+            background:'linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(0,0,0,0.8) 100%)',
+            border:'1px solid rgba(200,16,46,0.4)',
+            backdropFilter:'blur(5px)',
+            padding:'10px 18px',
+            borderRadius:'6px',
+            display:'flex',alignItems:'center',gap:12,
+            boxShadow:'10px 10px 30px rgba(0,0,0,0.7)',
+            zIndex:5,
+            pointerEvents:'none',
+          }}>
+             <div style={{width:8,height:8,background:'#10B981',borderRadius:'50%',boxShadow:'0 0 10px #10B981'}}></div>
+             <span style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'1.1rem',letterSpacing:'0.06em',color:'#fff',lineHeight:1}}>PPF SHIELD ACTIVE</span>
           </div>
         </div>
       </div>
