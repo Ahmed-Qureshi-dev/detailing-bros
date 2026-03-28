@@ -677,10 +677,30 @@ function Footer(){
   );
 }
 
+function IntroOverlay() {
+  const [show, setShow] = useState(true);
+  const [fade, setFade] = useState(false);
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => setFade(true), 2200);
+    const timer2 = setTimeout(() => setShow(false), 2700);
+    return () => { clearTimeout(timer1); clearTimeout(timer2); };
+  }, []);
+
+  if (!show) return null;
+
+  return (
+    <div className={`intro-overlay ${fade ? 'intro-fade-out' : ''}`}>
+      <img src={logo} alt="Detailing Bros Logo" className="intro-logo" />
+    </div>
+  );
+}
+
 function App(){
   useCursor();useFadeUp();
   return(
     <div>
+      <IntroOverlay />
       <Navbar/>
       <Hero/>
       <div className="section-divider"></div>
@@ -698,6 +718,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 
 <style>
+    /* ── Intro Animation ── */
+    .intro-overlay { position: fixed; inset: 0; z-index: 99999; background: radial-gradient(circle at center, #111 0%, #050505 100%); display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s; }
+    .intro-overlay.intro-fade-out { opacity: 0; visibility: hidden; }
+    .intro-logo { width: 140px; animation: spinShine 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes spinShine {
+      0% { transform: perspective(800px) rotateY(-180deg) scale(0.5); opacity: 0; filter: drop-shadow(0 0 0px #C8102E) brightness(0.5); }
+      40% { opacity: 1; filter: drop-shadow(0 0 40px #C8102E) brightness(1.8); }
+      100% { transform: perspective(800px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 20px rgba(200,16,46,0.6)) brightness(1); }
+    }
+
   @media(max-width:900px){#desknav{display:none!important;}#hamburger{display:flex!important;}}
   @media(max-width:768px){
     section#home { height: auto !important; min-height: 100dvh !important; }
