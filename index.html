@@ -682,8 +682,8 @@ function IntroOverlay() {
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setFade(true), 2200);
-    const timer2 = setTimeout(() => setShow(false), 2700);
+    const timer1 = setTimeout(() => setFade(true), 2800); // 1.5s spin + 1.3s hold
+    const timer2 = setTimeout(() => setShow(false), 3400); // 0.6s fade
     return () => { clearTimeout(timer1); clearTimeout(timer2); };
   }, []);
 
@@ -691,7 +691,10 @@ function IntroOverlay() {
 
   return (
     <div className={`intro-overlay ${fade ? 'intro-fade-out' : ''}`}>
-      <img src={logo} alt="Detailing Bros Logo" className="intro-logo" />
+      <div className="intro-logo-wrapper">
+        <div className="logo-glow"></div>
+        <img src={logo} alt="Detailing Bros Logo" className="intro-logo" />
+      </div>
     </div>
   );
 }
@@ -719,13 +722,29 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 
 <style>
     /* ── Intro Animation ── */
-    .intro-overlay { position: fixed; inset: 0; z-index: 99999; background: radial-gradient(circle at center, #111 0%, #050505 100%); display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s; }
+    .intro-overlay { position: fixed; inset: 0; z-index: 99999; background: #050505; display: flex; justify-content: center; align-items: center; transition: opacity 0.6s ease-out, visibility 0.6s; }
     .intro-overlay.intro-fade-out { opacity: 0; visibility: hidden; }
-    .intro-logo { width: 140px; animation: spinShine 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    @keyframes spinShine {
-      0% { transform: perspective(800px) rotateY(-180deg) scale(0.5); opacity: 0; filter: drop-shadow(0 0 0px #C8102E) brightness(0.5); }
-      40% { opacity: 1; filter: drop-shadow(0 0 40px #C8102E) brightness(1.8); }
-      100% { transform: perspective(800px) rotateY(0deg) scale(1); filter: drop-shadow(0 0 20px rgba(200,16,46,0.6)) brightness(1); }
+    .intro-logo-wrapper { position: relative; display: inline-flex; justify-content: center; align-items: center; }
+    .logo-glow {
+      position: absolute; width: 110px; height: 110px; border-radius: 50%;
+      background: radial-gradient(circle at center, #C8102E 0%, #050505 80%);
+      box-shadow: 0 0 35px 20px #FF1A36, 0 0 60px 40px #050505;
+      z-index: 1; opacity: 0;
+      animation: appearGlow 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.4s;
+    }
+    .intro-logo {
+      width: 150px; position: relative; z-index: 2;
+      mix-blend-mode: screen; /* Removes solid black background */
+      animation: spinTire 1.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+    }
+    @keyframes spinTire {
+      0% { transform: scale(0.2) rotate(-1080deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    @keyframes appearGlow {
+      0% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 50px 25px #FF1A36, 0 0 80px 45px #050505; }
+      100% { opacity: 0.85; transform: scale(1); box-shadow: 0 0 40px 20px #FF1A36, 0 0 65px 40px #050505; }
     }
 
   @media(max-width:900px){#desknav{display:none!important;}#hamburger{display:flex!important;}}
