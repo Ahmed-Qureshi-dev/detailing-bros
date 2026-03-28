@@ -286,8 +286,8 @@ function Hero(){
           </div>
 
           <div className="fade-up fd1" style={{lineHeight:0.92,marginBottom:8}}>
-             <h1 style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(4rem,8vw,8.5rem)',letterSpacing:'0.04em',color:'#fff',textShadow:'0 10px 40px rgba(0,0,0,0.9)'}}>
-              ULTIMATE <span style={{WebkitTextStroke:'2px #C8102E',color:'transparent',textShadow:'0 0 40px rgba(200,16,46,0.4)'}}>SHIELD.</span>
+             <h1 style={{fontFamily:'Bebas Neue,sans-serif',fontSize:'clamp(3.2rem,12vw,8.5rem)',letterSpacing:'0.04em',color:'#fff',textShadow:'0 10px 40px rgba(0,0,0,0.9)',display:'flex',flexWrap:'wrap',justifyContent:'center',gap:'0.2em'}}>
+              <span>ULTIMATE</span> <span style={{WebkitTextStroke:'2px #C8102E',color:'transparent',textShadow:'0 0 40px rgba(200,16,46,0.4)'}}>SHIELD.</span>
              </h1>
           </div>
 
@@ -317,7 +317,7 @@ function Hero(){
           <div style={{
             position:'relative',
             width:'100%',
-            aspectRatio:'21/9', /* Ultra-wide cinematic */
+            aspectRatio:'16/9', /* Standard wide cinematic */
             transform:'rotateX(12deg) translateY(-20px) scale(0.95)',
             transformOrigin:'bottom center',
             transition:'transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.7s ease',
@@ -732,7 +732,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
     }
     #hero-main-layout { flex-direction: column !important; justify-content: center !important; padding-top: 110px !important; padding-bottom: 60px !important; height: auto !important; gap: 40px !important; }
     #hero-text-content { flex: unset !important; max-width: 100% !important; width: 100% !important; padding-bottom: 0px !important; }
-    #hero-image-grid { position: relative !important; width: 100% !important; height: 380px !important; flex: unset !important; }
+    #hero-image-grid { position: relative !important; width: 100% !important; height: auto !important; flex: unset !important; margin-bottom: 30px !important; perspective: none !important; }
     #herobody{display:none!important;}
     #scrollhint{display:none!important;}
     #aboutgrid{grid-template-columns:1fr!important;gap:32px!important;}
