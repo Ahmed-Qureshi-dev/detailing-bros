@@ -596,6 +596,7 @@
     function Navbar() {
       const [scrolled, setScrolled] = useState(false);
       const [open, setOpen] = useState(false);
+      const [openDropdown, setOpenDropdown] = useState(null);
       useEffect(() => { const fn = () => setScrolled(window.scrollY > 40); window.addEventListener('scroll', fn); return () => window.removeEventListener('scroll', fn); }, []);
 
       const svc = [
@@ -658,7 +659,25 @@
           <button onClick={() => setOpen(false)} style={{ position: 'absolute', top: 24, right: 32, background: 'none', border: 'none', color: '#C8102E', fontSize: '1.4rem', cursor: 'pointer' }}>✕</button>
           <img src={logo} alt="" style={{ height: 72, width: 72, borderRadius: '50%', marginBottom: 8, border: '2px solid rgba(200,16,46,0.5)', boxShadow: '0 0 16px rgba(200,16,46,0.25)' }} />
           <div style={{ fontFamily: 'Bebas Neue,sans-serif', color: '#fff', fontSize: '1.5rem', letterSpacing: '0.12em', marginBottom: 20 }}>DETAILING BROS</div>
-          {links.map(l => <a key={l.label} href={l.href} className="mobile-nav-link" onClick={() => setOpen(false)}>{l.label}</a>)}
+          {links.map(l => l.dd ? (
+            <div key={l.label}>
+              <button onClick={() => setOpenDropdown(openDropdown === l.label ? null : l.label)} className="mobile-nav-link" style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '13px 0', fontFamily: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: 'inherit', color: 'inherit' }}>
+                {l.label}
+                <svg width="6" height="4" viewBox="0 0 8 5" fill="none" style={{ opacity: 0.4, transform: openDropdown === l.label ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}><path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+              </button>
+              {openDropdown === l.label && (
+                <div style={{ paddingLeft: 16, borderLeft: '2px solid rgba(200,16,46,0.3)', marginBottom: 8 }}>
+                  {l.dd.map(it => (
+                    <a key={it.label} href={it.href} className="mobile-nav-link" onClick={() => { setOpen(false); setOpenDropdown(null); }} style={{ display: 'block', paddingTop: 10, paddingBottom: 10, fontSize: '0.9rem', color: 'rgba(255,255,255,0.8)' }}>
+                      {it.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <a key={l.label} href={l.href} className="mobile-nav-link" onClick={() => setOpen(false)}>{l.label}</a>
+          ))}
           <a href="#contact" onClick={() => setOpen(false)} className="btn-red" style={{ marginTop: 8 }}>Book Consultation</a>
           <div style={{ marginTop: 24, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', gap: 12, justifyContent: 'center' }}>
             {[
@@ -672,7 +691,7 @@
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#C8102E'; }}>
                 {s.s}
               </a>
-            ))
+            ))}
           </div>
         </div>
       </>);
