@@ -254,6 +254,16 @@ function Navbar(){
 
 /* ═══════════════════════════ HERO ═══════════════════════════ */
 function Hero(){
+  const [current,setCurrent]=useState(0);
+  const timerRef=useRef(null);
+
+  useEffect(()=>{
+    timerRef.current=setInterval(()=>{
+      setCurrent(c=>(c+1)%heroSlides.length);
+    },3800);
+    return()=>clearInterval(timerRef.current);
+  },[]);
+
   return(
     <section id="home" style={{
       minHeight:'100dvh',height:'100dvh',
@@ -316,52 +326,58 @@ function Hero(){
           </div>
         </div>
 
-        {/* ── RIGHT 3D VIDEO PRESENTATION ── */}
+        {/* ── RIGHT IMAGE SLIDER ── */}
         <div id="hero-image-grid" className="fade-up fd5" style={{
           flex:1,
           width:'100%',
-          perspective:'1200px',
           position:'relative',
-          display:'flex',alignItems:'center',justifyContent:'flex-end'
+          display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'
         }}>
           {/* Intense Glow */}
           <div style={{position:'absolute',right:'10%',top:'50%',transform:'translateY(-50%)',width:'80%',height:'80%',background:'radial-gradient(circle, rgba(200,16,46,0.25) 0%, transparent 60%)',filter:'blur(50px)',zIndex:0,pointerEvents:'none'}}></div>
 
-          {/* 3D Tilted Video Container */}
           <div style={{
             position:'relative',
             width:'100%',
-            maxWidth:750,
-            aspectRatio:'16/9',
-            transform:'rotateY(-15deg) rotateX(10deg) scale(0.95)',
-            transformOrigin:'center right',
-            transition:'transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.7s ease',
-            borderRadius:12,
+            maxWidth:540,
+            aspectRatio:'1/1',
+            borderRadius:18,
             overflow:'hidden',
-            border:'1px solid rgba(200,16,46,0.5)',
-            boxShadow:'-20px 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(200,16,46,0.2)',
-            zIndex:2,
-            background:'#000',
-            cursor:'pointer'
-          }}
-          onMouseEnter={(e)=>{e.currentTarget.style.transform='rotateY(0deg) rotateX(0deg) scale(1)'; e.currentTarget.style.boxShadow='0 20px 50px rgba(0,0,0,0.9), 0 0 50px rgba(200,16,46,0.4)';}}
-          onMouseLeave={(e)=>{e.currentTarget.style.transform='rotateY(-15deg) rotateX(10deg) scale(0.95)'; e.currentTarget.style.boxShadow='-20px 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(200,16,46,0.2)';}}
-          >
-            {/* Dark gradient fade on the bottom of the video for depth */}
-            <div style={{position:'absolute',bottom:0,left:0,right:0,height:'30%',background:'linear-gradient(to top, rgba(0,0,0,0.95), transparent)',zIndex:3,pointerEvents:'none'}}></div>
-            <div style={{position:'absolute',top:0,left:0,right:0,height:'10%',background:'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',zIndex:3,pointerEvents:'none'}}></div>
-            
-            <iframe src="https://www.youtube.com/embed/kIBXuoGg3K8?autoplay=1&mute=1&loop=1&playlist=kIBXuoGg3K8&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowFullScreen title="Studio" style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%) scale(1.35)',width:'100%',height:'100%',border:'none',opacity:0.95,pointerEvents:'none'}}/>
-            
-            {/* Holographic scanning line */}
-            <div style={{
-              position:'absolute',top:0,left:0,right:0,height:2,
-              background:'linear-gradient(90deg, transparent, rgba(200,16,46,0.9), transparent)',
-              boxShadow:'0 0 15px rgba(200,16,46,1)',
-              animation:'scanLine 4s ease-in-out infinite',
-              pointerEvents:'none',
-              zIndex:4
-            }}></div>
+            boxShadow:'0 20px 60px rgba(0,0,0,0.8)',
+            border:'1px solid rgba(200,16,46,0.2)',
+            zIndex:2
+          }}>
+            {heroSlides.map((slide,i)=>(
+              <div key={i} style={{
+                position:'absolute',
+                inset:0,
+                opacity: i===current ? 1 : 0,
+                transition:'opacity 0.9s ease',
+                zIndex: i===current ? 2 : 1,
+              }}>
+                <img src={slide.img} alt={slide.label} style={{
+                  width:'100%',height:'100%',objectFit:'cover',
+                  display:'block',
+                  filter:'brightness(0.92) contrast(1.08) saturate(0.9)',
+                }}/>
+              </div>
+            ))}
+            {/* Active label */}
+            <div style={{position:'absolute',bottom:16,left:16,right:16,display:'flex',alignItems:'center',gap:8,zIndex:5}}>
+              <div style={{width:5,height:5,borderRadius:'50%',background:'#C8102E',boxShadow:'0 0 8px #C8102E, 0 0 20px rgba(200,16,46,0.4)',flexShrink:0}}></div>
+              <span style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.62rem',letterSpacing:'0.14em',textTransform:'uppercase',color:'rgba(255,255,255,0.9)',textShadow:'0 1px 6px rgba(0,0,0,0.8)'}}>{heroSlides[current].label}</span>
+            </div>
+            <div style={{position:'absolute',bottom:0,left:0,right:0,height:80,background:'linear-gradient(to top,rgba(0,0,0,0.6),transparent)',pointerEvents:'none',zIndex:4}}></div>
+          </div>
+          
+          <div style={{display:'flex',justifyContent:'center',gap:7,alignItems:'center',marginTop:24,zIndex:5}}>
+            {heroSlides.map((_,i)=>(
+              <button key={i}
+                className={`slide-dot ${i===current?'active':''}`}
+                onClick={()=>{clearInterval(timerRef.current);setCurrent(i);}}
+                style={{border:'none',padding:0,cursor:'pointer'}}
+              ></button>
+            ))}
           </div>
         </div>
       </div>
@@ -371,16 +387,6 @@ function Hero(){
 
 /* ═══════════════════════════ ABOUT ═══════════════════════════ */
 function About(){
-  const [current,setCurrent]=useState(0);
-  const timerRef=useRef(null);
-
-  useEffect(()=>{
-    timerRef.current=setInterval(()=>{
-      setCurrent(c=>(c+1)%heroSlides.length);
-    },3800);
-    return()=>clearInterval(timerRef.current);
-  },[]);
-
   return(
     <section id="about" style={{padding:'100px 0',background:'linear-gradient(180deg,#050505 0%,#0F0F0F 40%,#0A0A0A 60%,#050505 100%)'}}>
       <div id="aboutinner" style={{maxWidth:1400,margin:'0 auto',padding:'0 clamp(20px,4vw,48px)'}}>
@@ -389,52 +395,41 @@ function About(){
           <span style={{fontSize:'clamp(1rem, 3vw, 1.3rem)',fontWeight:600,letterSpacing:'0.32em',textTransform:'uppercase',color:'#C8102E'}}>Our Studio</span>
         </div>
         <div id="aboutgrid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'clamp(32px,6vw,72px)',alignItems:'center'}}>
-          {/* Images */}
-          <div className="fade-up">
+          {/* 3D Video */}
+          <div className="fade-up" style={{perspective:'1200px'}}>
             <div style={{
               position:'relative',
               width:'100%',
-              maxWidth:540,
-              aspectRatio:'1/1',
-              margin:'auto',
-              borderRadius:18,
+              maxWidth:750,
+              aspectRatio:'16/9',
+              transform:'rotateY(10deg) rotateX(5deg) scale(0.98)',
+              transformOrigin:'center left',
+              transition:'transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.7s ease',
+              borderRadius:12,
               overflow:'hidden',
-              boxShadow:'0 20px 60px rgba(0,0,0,0.8)',
-              border:'1px solid rgba(200,16,46,0.2)'
-            }}>
-              {heroSlides.map((slide,i)=>(
-                <div key={i} style={{
-                  position:'absolute',
-                  inset:0,
-                  opacity: i===current ? 1 : 0,
-                  transition:'opacity 0.9s ease',
-                  zIndex: i===current ? 2 : 1,
-                }}>
-                  <img src={slide.img} alt={slide.label} style={{
-                    width:'100%',height:'100%',objectFit:'cover',
-                    display:'block',
-                    filter:'brightness(0.92) contrast(1.08) saturate(0.9)',
-                  }}/>
-                </div>
-              ))}
-              {/* Active label */}
-              <div style={{position:'absolute',bottom:16,left:16,right:16,display:'flex',alignItems:'center',gap:8,zIndex:5}}>
-                <div style={{width:5,height:5,borderRadius:'50%',background:'#C8102E',boxShadow:'0 0 8px #C8102E, 0 0 20px rgba(200,16,46,0.4)',flexShrink:0}}></div>
-                <span style={{fontFamily:'DM Sans,sans-serif',fontSize:'0.62rem',letterSpacing:'0.14em',textTransform:'uppercase',color:'rgba(255,255,255,0.9)',textShadow:'0 1px 6px rgba(0,0,0,0.8)'}}>{heroSlides[current].label}</span>
-              </div>
-              {/* Subtle bottom gradient */}
-              <div style={{position:'absolute',bottom:0,left:0,right:0,height:80,background:'linear-gradient(to top,rgba(0,0,0,0.6),transparent)',pointerEvents:'none',zIndex:4}}></div>
-            </div>
-            
-            {/* Slide dots */}
-            <div style={{display:'flex',justifyContent:'center',gap:7,alignItems:'center',marginTop:16}}>
-              {heroSlides.map((_,i)=>(
-                <button key={i}
-                  className={`slide-dot ${i===current?'active':''}`}
-                  onClick={()=>{clearInterval(timerRef.current);setCurrent(i);}}
-                  style={{border:'none',padding:0,cursor:'pointer'}}
-                ></button>
-              ))}
+              margin:'auto',
+              border:'1px solid rgba(200,16,46,0.5)',
+              boxShadow:'20px 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(200,16,46,0.2)',
+              zIndex:2,
+              background:'#000',
+              cursor:'pointer'
+            }}
+            onMouseEnter={(e)=>{e.currentTarget.style.transform='rotateY(0deg) rotateX(0deg) scale(1)'; e.currentTarget.style.boxShadow='0 20px 50px rgba(0,0,0,0.9), 0 0 50px rgba(200,16,46,0.4)';}}
+            onMouseLeave={(e)=>{e.currentTarget.style.transform='rotateY(10deg) rotateX(5deg) scale(0.98)'; e.currentTarget.style.boxShadow='20px 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(200,16,46,0.2)';}}
+            >
+              <div style={{position:'absolute',bottom:0,left:0,right:0,height:'30%',background:'linear-gradient(to top, rgba(0,0,0,0.95), transparent)',zIndex:3,pointerEvents:'none'}}></div>
+              <div style={{position:'absolute',top:0,left:0,right:0,height:'10%',background:'linear-gradient(to bottom, rgba(0,0,0,0.6), transparent)',zIndex:3,pointerEvents:'none'}}></div>
+              
+              <iframe src="https://www.youtube.com/embed/kIBXuoGg3K8?autoplay=1&mute=1&loop=1&playlist=kIBXuoGg3K8&controls=0&showinfo=0&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowFullScreen title="Studio" style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%) scale(1.35)',width:'100%',height:'100%',border:'none',opacity:0.95,pointerEvents:'none'}}/>
+              
+              <div style={{
+                position:'absolute',top:0,left:0,right:0,height:2,
+                background:'linear-gradient(90deg, transparent, rgba(200,16,46,0.9), transparent)',
+                boxShadow:'0 0 15px rgba(200,16,46,1)',
+                animation:'scanLine 4s ease-in-out infinite',
+                pointerEvents:'none',
+                zIndex:4
+              }}></div>
             </div>
           </div>
           {/* Text */}
